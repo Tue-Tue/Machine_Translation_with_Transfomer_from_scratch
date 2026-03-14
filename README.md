@@ -1,41 +1,42 @@
-# English → Vietnamese Neural Machine Translation
+# Machine Translation
 
-Transformer model built **from scratch** with PyTorch — no Hugging Face, no pre-built transformer layers.  
+Transformer model built **from scratch** with PyTorch 
 Trained on the [IWSLT'15 English-Vietnamese](https://www.kaggle.com/datasets/tuannguyenvananh/iwslt15-englishvietnamese) dataset.
 
 ## Results
 
-| Split | BLEU |
+|| BLEU |
 |-------|------|
-| Val (tst2012) | *fill in* |
-| Test (tst2013) | *fill in* |
+| Val (tst2012) | *25.20* |
+| Test (tst2013) | *27.29* |
 
 ## Architecture
 
 - Encoder-Decoder Transformer (4 layers, 8 heads, d_model=256, d_ff=1024)
-- Custom Multi-Head Attention, Positional Encoding, Layer Normalization
-- Beam Search decoding (beam size=5, length penalty α=0.6)
-- Label Smoothing (0.1) + OneCycleLR scheduler
+- Multi-Head Attention, Positional Encoding, Layer Normalization
+- Beam Search decoding
+- Label Smoothing
+
+## Training Loss
+![Loss](pictures/Loss.png)
+
+## Attention Heatmaps
+![Heatmaps](pictures/Attention_heatmaps.png)
 
 ## Project Structure
 
 ```
-├── config.py        # Hyperparameters & paths
-├── vocabulary.py    # Tokenizer & Vocabulary class
-├── dataset.py       # TranslationDataset & DataLoaders
-├── model.py         # Full Transformer architecture
-├── utils.py         # Mask helpers
-├── train.py         # Training loop
-├── evaluate.py      # Beam search & BLEU scoring
-├── translate.py     # Interactive inference demo
-└── requirements.txt
+├── config.py       
+├── vocabulary.py    
+├── dataset.py       
+├── model.py         
+├── utils.py        
+├── train.py         
+├── evaluate.py      
 ```
 
 ## Setup
 
-```bash
-pip install -r requirements.txt
-```
 
 Update `DATA_DIR` in `config.py` to point to your local dataset path.
 
@@ -50,10 +51,4 @@ python train.py
 ```python
 from evaluate import run_evaluation
 run_evaluation(model, val_ds, test_ds, trg_vocab)
-```
-
-## Inference
-
-```bash
-python translate.py
 ```

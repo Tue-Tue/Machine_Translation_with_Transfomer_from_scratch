@@ -21,6 +21,10 @@ Trained on the [IWSLT'15 English-Vietnamese](https://www.kaggle.com/datasets/tua
 ![Loss](pictures/Loss.png)
 
 ## Attention Heatmaps
+**Input:** Technology has changed the world significantly.
+
+**Output:** công nghệ đã thay đổi thế giới .
+
 ![Heatmaps](pictures/Attention_heatmap.png)
 
 ## Project Structure
